@@ -1,2 +1,2 @@
 # flowAnalysis
-This is a protable enviroment for flow analysis.
+This is a portable enviroment for flow analysis.
