@@ -1,7 +1,13 @@
-from importFlow import *
 from FlowCytometryTools import PolyGate
 
+import settings
+reload(settings)
 from settings import makePlate, liveGate, singletGate
+
+import importFlow
+reload(importFlow)
+from importFlow import *
+
 
 def applyGates(data, gates):
     # gates the samples (in order) 
@@ -36,10 +42,10 @@ figure(4); histxis = singletPlate.plot(['M Cherry-A'], bins=np.logspace(1, 6, 30
 # make the axes log again
 for entry in np.ndenumerate(mChSCCaxis[1]):
     entry[1].set_xscale('log')
+    entry[1].set_yscale('log')
 
 for entry in np.ndenumerate(histxis[1]):
     entry[1].set_xscale('log')
-
 
 
 plt.show()

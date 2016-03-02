@@ -6,6 +6,8 @@ import numpy as np
 from FlowCytometryTools import FCMeasurement, FCPlate
 from pylab import *
 
+import settings
+reload(settings)
 from settings import directory, toFilter
 
 
