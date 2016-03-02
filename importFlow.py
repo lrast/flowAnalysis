@@ -22,8 +22,8 @@ samples = importFlow(directory)
 
 
 def filterBubbles(cutoff, data):
-    #remove the bubles from the bubbly sample.
-    #the bubbles start after time 18000
+    #remove the bubles from bubbly samples
+    #the bubbles start after time cutoff
     filtered = data[ data['Time'] < cutoff ]
     return filtered
 

@@ -2,7 +2,8 @@
 
 from FlowCytometryTools import FCMeasurement, FCPlate, PolyGate
 
-run = 'titrationD4'
+#run = 'timecourse4Gy'
+run = 'titrationD2'
 
 if run == 'titrationD2':
     # NCS titration day1
@@ -48,6 +49,42 @@ if run == 'titrationD4':
         plateView = FCPlate('aggregated',nameMap, None, shape=(2,7), positions=plateMap)
 
         return plateView
+
+
+if run[:-3] == 'timecourse':
+    #Initial timecourse experiment
+    directory = './timecourse/'+run[-3:]
+    toFilter = []
+
+    liveGate = PolyGate([(5.104e+04, 2.257e+03), (2.792e+04, 2.725e+03), (1.451e+04, 1.147e+04), (2.930e+04, 2.162e+04), (2.610e+05, 2.254e+05), (2.619e+05, 3.869e+04), (5.274e+04, 2.583e+03), (5.274e+04, 2.583e+03)], ('FSC-A', 'SSC-A'), region='in', name='gate1')
+    singletGate = PolyGate([(2.463e+04, 3.052e+04), (2.257e+05, 2.116e+05), (2.588e+05, 2.121e+05), (2.588e+05, 1.725e+05), (4.248e+04, 2.238e+04), (2.463e+04, 3.052e+04), (2.463e+04, 3.052e+04)], ('FSC-A', 'FSC-H'), region='in', name='gate1')
+
+
+    def makePlate(data):
+        ## makes the plate layout with the current data
+        nameMap = {'d0.-': data[0], 
+                    'd2.-': data[1], 'd2.+': data[2],
+                    'd4.--': data[3], 'd4.-+': data[4], 'd4.+-': data[5], 'd4.++': data[6],
+                    'd8.---': data[7], 'd8.--+': data[8], 'd8.-+-': data[9], 'd8.-++': data[10], 'd8.+--': data[11], 'd8.+-+': data[12], 'd8.++-': data[13], 'd8.+++': data[14]
+        }
+
+        plateMap = {'d0.-': ('A', 1), 
+                    'd2.-': ('A', 2), 'd2.+': ('B', 2),
+                    'd4.--': ('A', 3), 'd4.-+': ('B', 3), 'd4.+-': ('C', 3), 'd4.++': ('D', 3),
+                    'd8.---': ('A', 4), 'd8.--+': ('B', 4), 'd8.-+-': ('C', 4), 'd8.-++': ('D', 4), 'd8.+--': ('E', 4), 'd8.+-+': ('F', 4), 'd8.++-': ('G', 4), 'd8.+++': ('H', 4)
+        }
+
+        plateView = FCPlate('aggregated',nameMap, None, shape=(8,4), positions=plateMap)
+
+        return plateView
+
+
+
+
+
+
+
+
 
 
 

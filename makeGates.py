@@ -35,8 +35,8 @@ livePlate.plot(['FSC-A', 'FSC-H'], gates=[singletGate], gate_colors='red',
 singletSamples = applyGates( liveSamples, [ singletGate ])
 singletPlate = makePlate( singletSamples )
 
-figure(3); mChSCCaxis = singletPlate.plot(['M Cherry-A', 'SSC-A'], kind='scatter', hide_tick_lines=False, s=1, alpha=0.3, xlim=(10**2,10**6))
-figure(4); histxis = singletPlate.plot(['M Cherry-A'], bins=np.logspace(1, 6, 300), hide_tick_lines=False, xlim=(10**2,10**6))
+figure(3); mChSCCaxis = singletPlate.plot(['M Cherry-A', 'SSC-A'], kind='scatter', hide_tick_lines=False, s=1, alpha=0.3, xlim=(10**0,10**6))
+figure(4); histxis = singletPlate.plot(['M Cherry-A'], bins=np.logspace(1, 6, 300), hide_tick_lines=False, xlim=(10**0,10**6))
 
 
 # make the axes log again
@@ -54,12 +54,15 @@ plt.show()
 
 def makeLotsPlots():
     i = 1
-    for entry in samples:
+    for entry in singletSamples:
+        print i, entry.ID
         fig = figure(i)
         ax = fig.add_subplot(1,1,1)
-        #entry.plot(['FSC-A', 'SSC-A'], kind='scatter');
-        entry.plot( ['M Cherry-A'], bins=np.logspace(1, 6, 500) )
+        entry.plot(['M Cherry-A', 'SSC-A'], kind='scatter', s=1, alpha=0.3);
+        #entry.plot( ['M Cherry-A'], bins=np.logspace(1, 6, 500) )
+        xlim(10**0,10**6)
         ax.set_xscale('log')
+        ax.set_yscale('log')
 
         i+= 1
 
