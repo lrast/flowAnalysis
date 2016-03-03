@@ -3,7 +3,7 @@
 from FlowCytometryTools import FCMeasurement, FCPlate, PolyGate
 
 #run = 'timecourse4Gy'
-run = 'titrationD2'
+run = 'titrationD4'
 
 if run == 'titrationD2':
     # NCS titration day1
@@ -77,12 +77,6 @@ if run[:-3] == 'timecourse':
         plateView = FCPlate('aggregated',nameMap, None, shape=(8,4), positions=plateMap)
 
         return plateView
-
-
-
-
-
-
 
 
 
