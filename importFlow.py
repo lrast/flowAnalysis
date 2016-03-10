@@ -6,10 +6,6 @@ import numpy as np
 from FlowCytometryTools import FCMeasurement, FCPlate
 from pylab import *
 
-import settings
-reload(settings)
-from settings import directory, toFilter
-
 
 def importFlow(directory):
     toImport = os.listdir(directory)
@@ -18,8 +14,6 @@ def importFlow(directory):
     samples = [FCMeasurement(ID=entry, datafile=directory+'/'+entry) for entry in toImport]
     return samples
 
-samples = importFlow(directory)
-
 
 def filterBubbles(cutoff, data):
     #remove the bubles from bubbly samples
@@ -27,6 +21,5 @@ def filterBubbles(cutoff, data):
     filtered = data[ data['Time'] < cutoff ]
     return filtered
 
-for entry in toFilter:
-    samples[entry].data = filterBubbles(18000, samples[entry].data)
+
 
