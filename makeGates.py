@@ -2,7 +2,7 @@ from FlowCytometryTools import PolyGate
 
 import settings
 reload(settings)
-from settings import makePlate, liveGate, singletGate
+from settings import makePlate, liveGate, singletGate # offGate, inducingGate
 
 import importFlow
 reload(importFlow)
@@ -19,7 +19,7 @@ def applyGates(data, gates):
 
 
 # plot the live gate
-makePlots = 0
+makePlots = 1
 if makePlots == 1:
     ungatedPlate = makePlate(samples)
     figure(1); 
@@ -40,6 +40,7 @@ if makePlots == 1:
     figure(3); mChSCCaxis = singletPlate.plot(['M Cherry-A', 'SSC-A'], kind='scatter', hide_tick_lines=False, s=1, alpha=0.3, xlim=(10**1,10**6))
     figure(4); histxis = singletPlate.plot(['M Cherry-A'], bins=np.logspace(1, 6, 300), hide_tick_lines=False, xlim=(10**1,10**6))
 
+    #gates=[offGate, inducingGate],
 
     # make the axes log again
     for entry in np.ndenumerate(mChSCCaxis[1]):

@@ -12,7 +12,7 @@ from makeGates import singletSamples
 
 def makePlots():
     i = 1
-    for entry in singletSamples[6:7]:
+    for entry in singletSamples:
         print i, entry.ID
         g = sns.jointplot( x='M Cherry-A', y='SSC-A', data=entry.data, xlim=(10**1, 10**6), ylim=(10**4, 10**6), marginal_kws=dict(bins=np.logspace(0, 6, 300)), joint_kws={"s": 1} )
         g.fig.get_axes()[0].set_xscale('log')
