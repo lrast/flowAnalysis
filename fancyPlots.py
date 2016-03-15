@@ -4,13 +4,9 @@ import seaborn as sns
 from pylab import *
 import numpy as np
 
-import makeGates
-reload(makeGates)
-from makeGates import singletSamples
 
 
-
-def makePlots():
+def makePlots(singletSamples):
     i = 1
     for entry in singletSamples:
         print i, entry.ID
