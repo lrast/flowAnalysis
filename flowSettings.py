@@ -12,7 +12,6 @@ class settings(object):
         self.makePlate = makePlate
 
 
-
 def makeSettings(run):
     #returns the settings for the specified run
     if run == 'titrationD2':
@@ -99,8 +98,8 @@ def makeSettings(run):
         singletGate = PolyGate([(1.2e+04, 1.5e+04), (2.257e+05, 2.116e+05), (2.588e+05, 2.121e+05), (2.588e+05, 1.725e+05), (4.248e+04, 2.238e+04), (1.2e+04, 1.5e+04), (1.2e+04, 1.5e+04)], ('FSC-A', 'FSC-H'), region='in', name='gate2')
 
 
-        offGate = PolyGate([(2.509e+02, 1.835e+04), (1.276e+03, 1.694e+05), (3.857e+02, 1.705e+05), (8.154e+00, 1.449e+04), (2.509e+02, 1.890e+04)], ('M Cherry-A', 'SSC-A'), region='in', name='off')
-        inducingGate = PolyGate([(1.033e+03, 1.325e+05), (3.587e+02, 2.386e+04), (1.869e+03, 3.489e+04), (2.624e+03, 1.192e+05), (1.114e+03, 1.330e+05)], ('M Cherry-A', 'SSC-A'), region='in', name='inducing')
+        #offGate = PolyGate([(10**3.435e+00, 10**5.415e+00), (10**2.888e+00, 10**4.878e+00), (10**2.748e+00, 10**4.621e+00), (10**2.534e+00, 10**4.314e+00), (10**1.951e+00, 10**4.206e+00), (10**1.821e+00, 10**4.391e+00), (10**2.982e+00, 10**5.419e+00), (10**3.435e+00, 10**5.419e+00)], ('M Cherry-A', 'SSC-A'), region='in', name='gate1')
+
 
         def makePlate(data):
             ## makes the plate layout with the current data
