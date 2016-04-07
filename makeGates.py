@@ -32,12 +32,18 @@ def plotGates(samples, settings):
     singletSamples = applyGates( liveSamples, [ settings.singletGate ])
     singletPlate = settings.makePlate( singletSamples )
 
-    offSamples = applyGates( singletSamples, [ settings.offGate ])
-    offPlate = settings.makePlate( offSamples)
+    #offSamples = applyGates( singletSamples, [ settings.offGate ])
+    #offPlate = settings.makePlate( offSamples)
 
 
-    figure(3); mChSCCaxis = offPlate.plot(['M Cherry-A', 'SSC-A'], kind='scatter', hide_tick_lines=False, s=1, alpha=0.3, xlim=(10**1,10**6))
+    figure(3); mChSCCaxis = singletPlate.plot(['M Cherry-A', 'SSC-A'], kind='scatter', hide_tick_lines=False, s=1, alpha=0.3, xlim=(10**1,10**6))
     figure(4); histxis = singletPlate.plot(['M Cherry-A'], bins=np.logspace(1, 6, 300), hide_tick_lines=False, xlim=(10**1,10**6))
+
+
+    # other plots for pilot experiment for Karin
+    #figure(3); mChBFPaxis = singletPlate.plot(['AmCyan-A', 'DsRed-A'], kind='scatter', hide_tick_lines=False, s=1, alpha=0.3, xlim=(10**1,10**6))
+    #figure(4); mChSCCaxis = singletPlate.plot(['SSC-A', 'DsRed-A'], kind='scatter', hide_tick_lines=False, s=1, alpha=0.3, xlim=(10**1,10**6))
+    #figure(5); BFPSCCaxis = singletPlate.plot(['SSC-A', 'AmCyan-A'], kind='scatter', hide_tick_lines=False, s=1, alpha=0.3, xlim=(10**1,10**6))
 
 
     #gates=[offGate, inducingGate],

@@ -120,6 +120,26 @@ def makeSettings(run):
             return plateView
 
 
+    if run == 'quorumPilot':
+        directory = './quorumPilot'
+        toFilter = []
+
+        liveGate = PolyGate([(1.148e+04, 2.789e+04), (2.148e+04, 6.104e+03), (6.696e+04, 6.104e+03), (2.596e+05, 1.471e+05), (2.591e+05, 2.608e+05), (1.004e+05, 2.574e+05), (1.148e+04, 2.721e+04), (1.148e+04, 2.721e+04)], ('FSC-A', 'SSC-A'), region='in', name='live')
+        singletGate = PolyGate([(2.055e+04, 2.754e+04), (2.797e+04, 1.781e+04), (2.587e+05, 1.556e+05), (2.582e+05, 1.991e+05), (2.211e+05, 2.001e+05), (2.055e+04, 2.806e+04)], ('FSC-A', 'FSC-H'), region='in', name='singlets')
+
+        def makePlate(data):
+            ## makes the plate layout with the current data
+            nameMap = {'mixed0': data[0], 'mixed100': data[1], 'mixed20': data[2], 'mixed40': data[3], 'mixed60': data[4], 'mixed80': data[5], 
+                        'pure100': data[6],'pure20': data[7], 'pure40': data[8], 'pure60': data[9], 'pure80': data[10] }
+
+            plateMap = {'mixed0': ('A', 1), 'mixed20': ('A', 2), 'mixed40': ('A', 3), 'mixed60': ('A', 4), 'mixed80': ('A', 5), 'mixed100': ('A', 6), 
+                        'pure20': ('B', 2), 'pure40': ('B', 3), 'pure60': ('B', 4), 'pure80': ('B', 5), 'pure100': ('B', 6) }
+
+            plateView = FCPlate('aggregated',nameMap, None, shape=(2,6), positions=plateMap)
+
+            return plateView
+
+
     output = settings(directory, toFilter, liveGate, singletGate, makePlate)
     return output
 
